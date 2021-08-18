@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/softEngineerFragment"
+        android:title="@string/software_development"
+        android:enabled="true"
+        android:icon="@drawable/ic_software_developer"/>
+
+    <item
+        android:id="@+id/designFragment"
+        android:title="@string/graphic_designer"
+        android:enabled="true"
+        android:icon="@drawable/ic_graphic_designer"/>
+
+    <item
+        android:id="@+id/marketingFragment"
+        android:title="@string/marketing"
+        android:enabled="true"
+        android:icon="@drawable/ic_digital_marketing"/>
+
+    <item
+        android:id="@+id/customerServicesFragment"
+        android:title="@string/customer_services"
+        android:enabled="true"
+        android:icon="@drawable/ic_customer_service"/>
+
+    <item
+        android:id="@+id/savedJobsFragment"
+        android:title="@string/saved_jobs"
+        android:enabled="true"
+        android:icon="@drawable/ic_bookmark"/>
+
+</menu>

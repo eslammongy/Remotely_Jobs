@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Remotely Jobs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">todo</string>
+    <string name="find_your_job">Find Your Job</string>
+    <string name="software_development">SoftWare Development</string>
+    <string name="graphic_designer">Graphic Designer</string>
+    <string name="marketing">Marketing</string>
+    <string name="customer_services">Customer Services</string>
+    <string name="saved_jobs">Saved Jobs</string>
+    <string name="title">Title</string>
+</resources>

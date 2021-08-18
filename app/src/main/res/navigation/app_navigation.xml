@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/softEngineerFragment">
+
+    <fragment
+        android:id="@+id/softEngineerFragment"
+        android:name="com.eslammongy.remotelyjobs.SoftEngineerFragment"
+        android:label="fragment_soft_engineer"
+        tools:layout="@layout/fragment_soft_engineer" >
+        <action
+            android:id="@+id/action_softEngineerFragment_to_designFragment"
+            app:destination="@id/designFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/designFragment"
+        android:name="com.eslammongy.remotelyjobs.DesignFragment"
+        android:label="fragment_design"
+        tools:layout="@layout/fragment_design" >
+        <action
+            android:id="@+id/action_designFragment_to_marketingFragment"
+            app:destination="@id/marketingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/marketingFragment"
+        android:name="com.eslammongy.remotelyjobs.MarketingFragment"
+        android:label="fragment_markting"
+        tools:layout="@layout/fragment_markting" >
+        <action
+            android:id="@+id/action_marketingFragment_to_customerServicesFragment"
+            app:destination="@id/customerServicesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerServicesFragment"
+        android:name="com.eslammongy.remotelyjobs.CustomerServicesFragment"
+        android:label="fragment_customer_services"
+        tools:layout="@layout/fragment_customer_services" >
+        <action
+            android:id="@+id/action_customerServicesFragment_to_savedJobsFragment"
+            app:destination="@id/savedJobsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedJobsFragment"
+        android:name="com.eslammongy.remotelyjobs.SavedJobsFragment"
+        android:label="fragment_saved_jobs"
+        tools:layout="@layout/fragment_saved_jobs" />
+</navigation>
