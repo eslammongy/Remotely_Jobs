@@ -16,19 +16,15 @@
         android:background="@drawable/appbar_custom_shape"
         app:layout_constraintTop_toBottomOf="@+id/guideline4">
 
-        <TextView
-            android:id="@+id/titleActiveFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/roboto_regular"
-            android:gravity="center"
-            android:text="@string/title"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_marginStart="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/software_development"
+            app:titleTextColor="@color/white"
+            app:barrierAllowsGoneWidgets="false"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageButton
             android:id="@+id/btnSearchForJobs"
@@ -41,7 +37,7 @@
             android:src="@drawable/ic_baseline_search_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/titleActiveFragment"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="15dp"
             app:tint="@color/white" />
 
@@ -55,9 +51,7 @@
         app:backgroundColor="@color/lightDark"
         app:cornerRadius="15dp"
         android:elevation="10dp"
-        app:layout_constraintCircleRadius="20dp"
-        app:circularflow_defaultRadius="20dp"
-        app:circularflow_radiusInDP="20dp"
+
         app:iconTint="@color/primaryGrey"
         app:iconTintActive="@color/Orange"
         app:layout_constraintBottom_toBottomOf="parent"

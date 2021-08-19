@@ -10,31 +10,41 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.eslammongy.remotelyjobs.databinding.ActivityHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import me.ibrahimsn.lib.SmoothBottomBar
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityHomeBinding
     private lateinit var navController: NavController
-    private lateinit var bottomBarNav: SmoothBottomBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        bottomBarNav = findViewById(R.id.bottomBarNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.findNavController()
-        setupSmoothBottomMenu()
+         setSupportActionBar(binding.appBar)
+         setupActionBarWithNavController(navController)
+         setupSmoothBottomMenu()
+
+
+
     }
 
     private fun setupSmoothBottomMenu() {
-        val popupMenu = PopupMenu(this, this.bottomBarNav)
+        val popupMenu = PopupMenu(this, binding.root)
         popupMenu.inflate(R.menu.bottom_navigation_menu)
         val menu = popupMenu.menu
-        bottomBarNav.setupWithNavController(menu, navController)
+        binding.bottomBarNav.setupWithNavController(menu, navController)
+
     }
-    override fun onSupportNavigateUp(): Boolean {
+
+override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 

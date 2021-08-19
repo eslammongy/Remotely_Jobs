@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/softEngineerFragment"
         android:name="com.eslammongy.remotelyjobs.SoftEngineerFragment"
-        android:label="fragment_soft_engineer"
+        android:label="@string/software_development"
         tools:layout="@layout/fragment_soft_engineer" >
         <action
             android:id="@+id/action_softEngineerFragment_to_designFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/designFragment"
         android:name="com.eslammongy.remotelyjobs.DesignFragment"
-        android:label="fragment_design"
+        android:label="@string/graphic_designer"
         tools:layout="@layout/fragment_design" >
         <action
             android:id="@+id/action_designFragment_to_marketingFragment"
@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/marketingFragment"
         android:name="com.eslammongy.remotelyjobs.MarketingFragment"
-        android:label="fragment_markting"
+        android:label="@string/marketing"
         tools:layout="@layout/fragment_markting" >
         <action
             android:id="@+id/action_marketingFragment_to_customerServicesFragment"
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/customerServicesFragment"
         android:name="com.eslammongy.remotelyjobs.CustomerServicesFragment"
-        android:label="fragment_customer_services"
+        android:label="@string/customer_services"
         tools:layout="@layout/fragment_customer_services" >
         <action
             android:id="@+id/action_customerServicesFragment_to_savedJobsFragment"
@@ -45,6 +45,6 @@
     <fragment
         android:id="@+id/savedJobsFragment"
         android:name="com.eslammongy.remotelyjobs.SavedJobsFragment"
-        android:label="fragment_saved_jobs"
+        android:label="@string/saved_jobs"
         tools:layout="@layout/fragment_saved_jobs" />
 </navigation>
