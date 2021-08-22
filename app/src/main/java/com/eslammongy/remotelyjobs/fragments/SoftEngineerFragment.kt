@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eslammongy.remotelyjobs.HomeActivity
-import com.eslammongy.remotelyjobs.R
-import com.eslammongy.remotelyjobs.adapter.RemoteJopsAdapter
+import com.eslammongy.remotelyjobs.adapter.RemoteJobsAdapter
 import com.eslammongy.remotelyjobs.databinding.FragmentSoftEngineerBinding
 import com.eslammongy.remotelyjobs.viewModel.RemoteViewModel
 
@@ -20,7 +18,7 @@ class SoftEngineerFragment : Fragment() {
     private var _binding:FragmentSoftEngineerBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel:RemoteViewModel
-    private lateinit var remotelyJobsAdapter: RemoteJopsAdapter
+    private lateinit var remotelyJobsAdapter: RemoteJobsAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +36,7 @@ class SoftEngineerFragment : Fragment() {
 
     private fun displayDevopsRecyclerView(){
 
-        remotelyJobsAdapter = RemoteJopsAdapter()
+        remotelyJobsAdapter = RemoteJobsAdapter(requireActivity())
         binding.rvSoftDevelopment.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
@@ -50,7 +48,7 @@ class SoftEngineerFragment : Fragment() {
 
     private fun fetchingData(){
 
-        viewModel.remoteJobsResult().observe(viewLifecycleOwner , {remoteJobs->
+        viewModel.remoteSoftwareJobsResult().observe(viewLifecycleOwner , {remoteJobs->
 
             if (remoteJobs != null){
                 remotelyJobsAdapter.differ.submitList(remoteJobs.jobs)

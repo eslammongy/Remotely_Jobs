@@ -96,7 +96,7 @@
     </fragment>
     <fragment
         android:id="@+id/jobDetailesFragment"
-        android:name="com.eslammongy.remotelyjobs.fragments.JobDetailesFragment"
+        android:name="com.eslammongy.remotelyjobs.fragments.JobDetailsFragment"
         android:label="fragment_job_detailes"
         tools:layout="@layout/fragment_job_detailes" >
         <action

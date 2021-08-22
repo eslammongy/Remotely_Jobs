@@ -1,5 +1,6 @@
 package com.eslammongy.remotelyjobs.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -7,11 +8,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.eslammongy.remotelyjobs.HomeActivity
 import com.eslammongy.remotelyjobs.databinding.JobItemListBinding
+import com.eslammongy.remotelyjobs.fragments.CustomWebView
 import com.eslammongy.remotelyjobs.fragments.SoftEngineerFragmentDirections
 import com.eslammongy.remotelyjobs.model.JobModel
 
-class RemoteJopsAdapter :RecyclerView.Adapter<RemoteJopsAdapter.RemoteJobsViewHolder>(){
+class RemoteJobsAdapter (private val context: Context):RecyclerView.Adapter<RemoteJobsAdapter.RemoteJobsViewHolder>(){
 
     private var binding:JobItemListBinding? = null
 
@@ -37,7 +40,7 @@ class RemoteJopsAdapter :RecyclerView.Adapter<RemoteJopsAdapter.RemoteJobsViewHo
         holder.itemView.apply {
             Glide.with(this).load(currentJob.companyLogoUrl).into(binding?.ivCompanyLogo!!)
 
-            binding?.tvJobLocation!!.text = currentJob.candidateRequiredLocation
+          //  binding?.tvJobLocation!!.text = currentJob.candidateRequiredLocation
             binding?.tvJobTitle!!.text = currentJob.title
             binding?.tvJobType!!.text = currentJob.jobType
             binding?.tvCompanyName!!.text = currentJob.companyName
@@ -45,8 +48,11 @@ class RemoteJopsAdapter :RecyclerView.Adapter<RemoteJopsAdapter.RemoteJobsViewHo
             val dateJob = currentJob.publicationDate?.split("T")
             binding?.tvDate!!.text = dateJob?.get(0)
         }.setOnClickListener {
-             val navDirection = SoftEngineerFragmentDirections.actionSoftEngineerFragmentToJobDetailesFragment(currentJob)
-            it.findNavController().navigate(navDirection)
+
+                CustomWebView(currentJob.url).show((context as HomeActivity).supportFragmentManager , "TAG")
+
+//             val navDirection = SoftEngineerFragmentDirections.actionSoftEngineerFragmentToJobDetailesFragment(currentJob)
+//            it.findNavController().navigate(navDirection)
         }
     }
 

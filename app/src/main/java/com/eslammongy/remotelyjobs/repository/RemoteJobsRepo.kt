@@ -13,13 +13,15 @@ import retrofit2.Response
 class RemoteJobsRepo {
 
     private val remoteJobsServices = RetrofitBuilder.API_SERVICES
-    private val remoteJobsLiveData:MutableLiveData<RemoteJobs> = MutableLiveData()
+    private var remoteJobsLiveData:MutableLiveData<RemoteJobs> = MutableLiveData()
 
     init {
-        getRemoteJobsResponse()
+        getRemoteSoftWareJobsResponse()
+        getRemoteGraphicJobsResponse()
     }
 
-    private fun getRemoteJobsResponse(){
+    private fun getRemoteSoftWareJobsResponse(){
+
         remoteJobsServices.getRemoteJobsResponse("software-dev").enqueue(
             object : Callback<RemoteJobs>{
                 override fun onResponse(call: Call<RemoteJobs>, response: Response<RemoteJobs>) {
@@ -33,7 +35,26 @@ class RemoteJobsRepo {
             })
     }
 
-    fun remoteJobsResult():LiveData<RemoteJobs>{
+    fun remoteSoftWareJobsResult():LiveData<RemoteJobs>{
+        return remoteJobsLiveData
+    }
+
+    private fun getRemoteGraphicJobsResponse(){
+        remoteJobsLiveData.value = null
+        remoteJobsServices.getRemoteJobsResponse("design").enqueue(
+            object : Callback<RemoteJobs>{
+                override fun onResponse(call: Call<RemoteJobs>, response: Response<RemoteJobs>) {
+                    remoteJobsLiveData.postValue(response.body())
+                }
+
+                override fun onFailure(call: Call<RemoteJobs>, t: Throwable) {
+                    remoteJobsLiveData.postValue(null)
+                    Log.e(TAG , "onFailure ..${t.message}")
+                }
+            })
+    }
+
+    fun remoteGraphicJobsResult():LiveData<RemoteJobs>{
         return remoteJobsLiveData
     }
 
