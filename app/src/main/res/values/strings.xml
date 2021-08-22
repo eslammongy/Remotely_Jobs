@@ -10,4 +10,9 @@
     <string name="customer_services">Customer Services</string>
     <string name="saved_jobs">Saved Jobs</string>
     <string name="title">Title</string>
+    <string name="today">Today</string>
+    <string name="job_title">Job Title</string>
+    <string name="job_type">job type</string>
+    <string name="job_location">Job location</string>
+    <string name="company_name">Company Name</string>
 </resources>

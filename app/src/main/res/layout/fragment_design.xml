@@ -5,13 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".DesignFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGraphicDesigner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="30sp"
-        android:fontFamily="@font/islandamina"
-        android:text="@string/graphic_designer" />
-
+        android:layout_margin="10dp"
+        />
 </FrameLayout>

@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".SavedJobsFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSavedJobs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="30sp"
-        android:fontFamily="@font/islandamina"
-        android:text="@string/saved_jobs" />
+        android:layout_margin="10dp"
+        />
 
 </FrameLayout>

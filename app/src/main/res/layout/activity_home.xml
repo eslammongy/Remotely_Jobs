@@ -26,20 +26,16 @@
             app:barrierAllowsGoneWidgets="false"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <ImageButton
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/btnSearchForJobs"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/appbar_custom_shape"
-            android:contentDescription="@string/todo"
-            android:padding="8dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_baseline_search_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+           app:searchIcon="@drawable/ic_baseline_search_24"
             android:layout_marginEnd="15dp"
-            app:tint="@color/white" />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -51,7 +47,6 @@
         app:backgroundColor="@color/lightDark"
         app:cornerRadius="15dp"
         android:elevation="10dp"
-
         app:iconTint="@color/primaryGrey"
         app:iconTintActive="@color/Orange"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +71,18 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBarNav"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/app_navigation"
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/searchContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBarNav"
         app:layout_constraintTop_toBottomOf="@+id/topBar"
         app:defaultNavHost="true"
         app:navGraph="@navigation/app_navigation"

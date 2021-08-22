@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".CustomerServicesFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCustomerServices"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="30sp"
-        android:fontFamily="@font/islandamina"
-        android:text="@string/customer_services" />
+        android:layout_margin="10dp"
+       />
 
 </FrameLayout>
