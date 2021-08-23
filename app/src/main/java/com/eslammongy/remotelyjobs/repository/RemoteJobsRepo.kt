@@ -15,14 +15,14 @@ class RemoteJobsRepo {
     private val remoteJobsServices = RetrofitBuilder.API_SERVICES
     private var remoteJobsLiveData:MutableLiveData<RemoteJobs> = MutableLiveData()
 
-    init {
-        getRemoteSoftWareJobsResponse()
-        getRemoteGraphicJobsResponse()
-    }
+//    init {
+//        getRemoteSoftWareJobsResponse()
+//        getRemoteGraphicJobsResponse()
+//    }
 
-    private fun getRemoteSoftWareJobsResponse(){
-
-        remoteJobsServices.getRemoteJobsResponse("software-dev").enqueue(
+     fun getRemoteJobsResponse(category:String):LiveData<RemoteJobs>{
+         remoteJobsLiveData.value = null
+        remoteJobsServices.getRemoteJobsResponse(category).enqueue(
             object : Callback<RemoteJobs>{
                 override fun onResponse(call: Call<RemoteJobs>, response: Response<RemoteJobs>) {
                     remoteJobsLiveData.postValue(response.body())
@@ -33,28 +33,6 @@ class RemoteJobsRepo {
                     Log.e(TAG , "onFailure ..${t.message}")
                 }
             })
-    }
-
-    fun remoteSoftWareJobsResult():LiveData<RemoteJobs>{
-        return remoteJobsLiveData
-    }
-
-    private fun getRemoteGraphicJobsResponse(){
-        remoteJobsLiveData.value = null
-        remoteJobsServices.getRemoteJobsResponse("design").enqueue(
-            object : Callback<RemoteJobs>{
-                override fun onResponse(call: Call<RemoteJobs>, response: Response<RemoteJobs>) {
-                    remoteJobsLiveData.postValue(response.body())
-                }
-
-                override fun onFailure(call: Call<RemoteJobs>, t: Throwable) {
-                    remoteJobsLiveData.postValue(null)
-                    Log.e(TAG , "onFailure ..${t.message}")
-                }
-            })
-    }
-
-    fun remoteGraphicJobsResult():LiveData<RemoteJobs>{
         return remoteJobsLiveData
     }
 

@@ -38,18 +38,19 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <me.ibrahimsn.lib.SmoothBottomBar
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBarNav"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_margin="6dp"
-        app:backgroundColor="@color/lightDark"
+        android:background="@drawable/bottom_bar_background"
         app:cornerRadius="15dp"
+        android:layout_margin="6dp"
         android:elevation="10dp"
-        app:iconTint="@color/primaryGrey"
-        app:iconTintActive="@color/Orange"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/Orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"

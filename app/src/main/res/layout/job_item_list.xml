@@ -11,7 +11,7 @@
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="10dp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toStartOf="@id/logoLayout"
             android:orientation="vertical">
 
@@ -24,7 +24,7 @@
                 android:textColor="@color/primaryDark"
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_regular"
-                android:padding="8dp"
+                android:padding="6dp"
                 android:maxLength="30"
                 android:textStyle="bold"
                 />
@@ -46,8 +46,9 @@
                 android:drawablePadding="4dp"
                 android:text="@string/job_type"
                 android:textSize="17sp"
+                android:padding="6dp"
                 android:textColor="@color/primaryDark"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 app:drawableTint="@color/primaryDark"
                 app:drawableStartCompat="@drawable/ic_baseline_access_time_24" />
@@ -56,12 +57,12 @@
                 android:id="@+id/tv_date"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:drawablePadding="8dp"
+                android:drawablePadding="4dp"
                 android:text="@string/today"
                 android:textSize="17sp"
-                android:padding="8dp"
+                android:padding="6dp"
                 android:textColor="@color/primaryDark"
-                android:fontFamily="@font/roboto_regular"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24"
                 app:drawableTint="@color/primaryDark" />

@@ -10,19 +10,7 @@
         android:name="com.eslammongy.remotelyjobs.fragments.SoftEngineerFragment"
         android:label="@string/software_development"
         tools:layout="@layout/fragment_soft_engineer" >
-        <action
-            android:id="@+id/action_softEngineerFragment_to_designFragment"
-            app:destination="@id/designFragment"
-           />
-        <action
-            android:id="@+id/action_softEngineerFragment_to_jobDetailesFragment"
-            app:destination="@id/jobDetailesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
+
     </fragment>
 
     <fragment
@@ -30,117 +18,34 @@
         android:name="com.eslammongy.remotelyjobs.fragments.DesignFragment"
         android:label="@string/graphic_designer"
         tools:layout="@layout/fragment_design" >
-        <action
-            android:id="@+id/action_designFragment_to_marketingFragment"
-            app:destination="@id/marketingFragment" />
-        <action
-            android:id="@+id/action_designFragment_to_jobDetailesFragment"
-            app:destination="@id/jobDetailesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
+
     </fragment>
     <fragment
         android:id="@+id/marketingFragment"
         android:name="com.eslammongy.remotelyjobs.fragments.MarketingFragment"
         android:label="@string/marketing"
         tools:layout="@layout/fragment_markting" >
-        <action
-            android:id="@+id/action_marketingFragment_to_customerServicesFragment"
-            app:destination="@id/customerServicesFragment" />
-        <action
-            android:id="@+id/action_marketingFragment_to_jobDetailesFragment"
-            app:destination="@id/jobDetailesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
+
     </fragment>
     <fragment
         android:id="@+id/customerServicesFragment"
         android:name="com.eslammongy.remotelyjobs.fragments.CustomerServicesFragment"
         android:label="@string/customer_services"
         tools:layout="@layout/fragment_customer_services" >
-        <action
-            android:id="@+id/action_customerServicesFragment_to_savedJobsFragment"
-            app:destination="@id/savedJobsFragment" />
-        <action
-            android:id="@+id/action_customerServicesFragment_to_jobDetailesFragment"
-            app:destination="@id/jobDetailesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
+
     </fragment>
     <fragment
         android:id="@+id/savedJobsFragment"
         android:name="com.eslammongy.remotelyjobs.fragments.SavedJobsFragment"
         android:label="@string/saved_jobs"
         tools:layout="@layout/fragment_saved_jobs" >
-        <action
-            android:id="@+id/action_savedJobsFragment_to_jobDetailesFragment"
-            app:destination="@id/jobDetailesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
+
     </fragment>
     <fragment
         android:id="@+id/jobDetailesFragment"
         android:name="com.eslammongy.remotelyjobs.fragments.JobDetailsFragment"
         android:label="fragment_job_detailes"
         tools:layout="@layout/fragment_job_detailes" >
-        <action
-            android:id="@+id/action_jobDetailesFragment_to_savedJobsFragment"
-            app:destination="@id/savedJobsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"
-            />
-        <action
-            android:id="@+id/action_jobDetailesFragment_to_softEngineerFragment"
-            app:destination="@id/softEngineerFragment" app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_jobDetailesFragment_to_designFragment"
-            app:destination="@id/designFragment"  app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_jobDetailesFragment_to_marketingFragment"
-            app:destination="@id/marketingFragment"  app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_jobDetailesFragment_to_customerServicesFragment"
-            app:destination="@id/customerServicesFragment"  app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/jobDetailesFragment"
-            app:popUpToInclusive="true"/>
 
         <argument
             android:name="jobModel"

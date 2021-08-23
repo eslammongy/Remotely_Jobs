@@ -9,7 +9,12 @@ class RemoteViewModel(
     private val remoteJobsRepo: RemoteJobsRepo
 ) : AndroidViewModel(application) {
 
-    fun remoteSoftwareJobsResult() = remoteJobsRepo.remoteSoftWareJobsResult()
+    fun remoteSoftwareJobsResult() = remoteJobsRepo.getRemoteJobsResponse("software-dev")
 
-    fun remoteGraphicJobsResult() = remoteJobsRepo.remoteGraphicJobsResult()
+    fun remoteGraphicJobsResult() = remoteJobsRepo.getRemoteJobsResponse("design")
+
+    fun remoteMarketingJobsResult() = remoteJobsRepo.getRemoteJobsResponse("marketing")
+
+    fun remoteCustomerJobsResult() = remoteJobsRepo.getRemoteJobsResponse("customer-support")
+
 }

@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.eslammongy.remotelyjobs.HomeActivity
 import com.eslammongy.remotelyjobs.databinding.JobItemListBinding
 import com.eslammongy.remotelyjobs.fragments.CustomWebView
-import com.eslammongy.remotelyjobs.fragments.SoftEngineerFragmentDirections
 import com.eslammongy.remotelyjobs.model.JobModel
 
 class RemoteJobsAdapter (private val context: Context):RecyclerView.Adapter<RemoteJobsAdapter.RemoteJobsViewHolder>(){

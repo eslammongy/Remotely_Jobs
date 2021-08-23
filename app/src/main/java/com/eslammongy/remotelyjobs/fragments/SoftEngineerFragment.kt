@@ -15,7 +15,7 @@ import com.eslammongy.remotelyjobs.viewModel.RemoteViewModel
 
 class SoftEngineerFragment : Fragment() {
 
-    private var _binding:FragmentSoftEngineerBinding? = null
+    private var _binding: FragmentSoftEngineerBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel:RemoteViewModel
     private lateinit var remotelyJobsAdapter: RemoteJobsAdapter
@@ -31,11 +31,12 @@ class SoftEngineerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as HomeActivity).mainViewModel
+        binding.progressCircular.visibility = View.VISIBLE
+
         displayDevopsRecyclerView()
     }
 
     private fun displayDevopsRecyclerView(){
-
         remotelyJobsAdapter = RemoteJobsAdapter(requireActivity())
         binding.rvSoftDevelopment.apply {
             setHasFixedSize(true)
@@ -49,6 +50,7 @@ class SoftEngineerFragment : Fragment() {
     private fun fetchingData(){
 
         viewModel.remoteSoftwareJobsResult().observe(viewLifecycleOwner , {remoteJobs->
+            binding.progressCircular.visibility = View.GONE
 
             if (remoteJobs != null){
                 remotelyJobsAdapter.differ.submitList(remoteJobs.jobs)

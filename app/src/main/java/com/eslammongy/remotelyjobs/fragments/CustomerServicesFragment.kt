@@ -5,56 +5,61 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.eslammongy.remotelyjobs.HomeActivity
 import com.eslammongy.remotelyjobs.R
+import com.eslammongy.remotelyjobs.adapter.RemoteJobsAdapter
+import com.eslammongy.remotelyjobs.databinding.FragmentCustomerServicesBinding
+import com.eslammongy.remotelyjobs.databinding.FragmentMarktingBinding
+import com.eslammongy.remotelyjobs.viewModel.RemoteViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CustomerServicesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CustomerServicesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private var _binding: FragmentCustomerServicesBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var viewModel: RemoteViewModel
+    private lateinit var remotelyJobsAdapter: RemoteJobsAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer_services, container, false)
+    ): View {
+        _binding = FragmentCustomerServicesBinding.inflate(inflater , container , false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CustomerServicesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CustomerServicesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as HomeActivity).mainViewModel
+        displayDevopsRecyclerView()
+
     }
+    private fun displayDevopsRecyclerView(){
+
+        remotelyJobsAdapter = RemoteJobsAdapter(requireActivity())
+        binding.rvCustomerServices.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(object : DividerItemDecoration(activity , LinearLayout.HORIZONTAL){})
+            adapter = remotelyJobsAdapter
+        }
+        fetchingData()
+    }
+
+    private fun fetchingData(){
+
+        viewModel.remoteCustomerJobsResult().observe(viewLifecycleOwner , {remoteJobs->
+
+            if (remoteJobs != null){
+                remotelyJobsAdapter.differ.submitList(remoteJobs.jobs)
+            }
+
+        })
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+
 }
