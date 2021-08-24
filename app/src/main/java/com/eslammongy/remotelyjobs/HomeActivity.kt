@@ -1,26 +1,20 @@
 package com.eslammongy.remotelyjobs
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.eslammongy.remotelyjobs.databinding.ActivityHomeBinding
+import com.eslammongy.remotelyjobs.db.DataBaseBuilder
 import com.eslammongy.remotelyjobs.repository.RemoteJobsRepo
 import com.eslammongy.remotelyjobs.viewModel.RemoteViewModel
 import com.eslammongy.remotelyjobs.viewModel.ViewModelFactory
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import me.ibrahimsn.lib.SmoothBottomBar
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -49,13 +43,34 @@ class HomeActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomBarNav.setupWithNavController(navController)
 
+        binding.btnSearchForJobs.setOnClickListener {
+            navHostFragment.findNavController().navigate(R.id.globalActionToSearchFragment)
+        }
+        navHostFragment.findNavController()
+            .addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    R.id.searchFragment -> hideBottomViewPager()
+                    else -> showBottomViewPager()
+                }
+            }
         setUpViewModel()
+
+    }
+
+    private fun hideBottomViewPager() {
+        binding.topBar.isVisible = false
+        binding.bottomBarNav.isVisible = false
+    }
+
+    private fun showBottomViewPager() {
+        binding.topBar.isVisible = true
+        binding.bottomBarNav.isVisible = true
 
     }
 
     private fun setUpViewModel() {
 
-        val remoteJobsRepository = RemoteJobsRepo()
+        val remoteJobsRepository = RemoteJobsRepo(DataBaseBuilder(this))
         val viewModelFactory = ViewModelFactory(application, remoteJobsRepository)
         mainViewModel = ViewModelProvider(this, viewModelFactory).get(RemoteViewModel::class.java)
     }

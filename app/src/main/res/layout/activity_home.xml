@@ -25,16 +25,17 @@
             app:barrierAllowsGoneWidgets="false"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <androidx.appcompat.widget.SearchView
+        <ImageButton
             android:id="@+id/btnSearchForJobs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:searchIcon="@drawable/ic_baseline_search_24"
+            android:src="@drawable/ic_baseline_search_24"
+            android:background="@color/lightDark"
             android:layout_marginEnd="15dp"
-            />
+            android:contentDescription="@string/todo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

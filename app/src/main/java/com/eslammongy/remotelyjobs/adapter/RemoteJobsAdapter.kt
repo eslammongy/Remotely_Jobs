@@ -48,7 +48,7 @@ class RemoteJobsAdapter (private val context: Context):RecyclerView.Adapter<Remo
             binding?.tvDate!!.text = dateJob?.get(0)
         }.setOnClickListener {
 
-                CustomWebView(currentJob.url).show((context as HomeActivity).supportFragmentManager , "TAG")
+                CustomWebView(currentJob).show((context as HomeActivity).supportFragmentManager , "TAG")
 
 //             val navDirection = SoftEngineerFragmentDirections.actionSoftEngineerFragmentToJobDetailesFragment(currentJob)
 //            it.findNavController().navigate(navDirection)

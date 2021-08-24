@@ -29,25 +29,17 @@
                 android:textStyle="bold"
                 />
 
-                <ImageButton
-                    android:id="@+id/ibDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/ic_baseline_delete_24" />
 
             <TextView
                 android:id="@+id/tv_job_type"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawablePadding="4dp"
                 android:text="@string/job_type"
                 android:textSize="17sp"
                 android:padding="6dp"
-                android:textColor="@color/primaryDark"
+                android:textColor="@color/lightDark"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 app:drawableTint="@color/primaryDark"
@@ -56,12 +48,12 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_date"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:drawablePadding="4dp"
                 android:text="@string/today"
                 android:textSize="17sp"
                 android:padding="6dp"
-                android:textColor="@color/primaryDark"
+                android:textColor="@color/lightDark"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24"
@@ -82,6 +74,21 @@
 
 
         </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibDelete"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/circlar_shap"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/colorRed" />
+
     <LinearLayout
         android:id="@+id/logoLayout"
         android:layout_width="wrap_content"
@@ -99,6 +106,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_remotely_jobs_logo"
             android:padding="8dp"
+            android:background="@drawable/circlar_shap"
             app:shapeAppearanceOverlay="@style/RoundedShape"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -4,13 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.eslammongy.remotelyjobs.api.RetrofitBuilder
+import com.eslammongy.remotelyjobs.db.DataBaseBuilder
+import com.eslammongy.remotelyjobs.model.JobEntity
 import com.eslammongy.remotelyjobs.model.RemoteJobs
 import com.eslammongy.remotelyjobs.other.Constants.TAG
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RemoteJobsRepo {
+class RemoteJobsRepo (private val jobsDB:DataBaseBuilder){
 
     private val remoteJobsServices = RetrofitBuilder.API_SERVICES
     private var remoteJobsLiveData:MutableLiveData<RemoteJobs> = MutableLiveData()
@@ -35,5 +37,9 @@ class RemoteJobsRepo {
             })
         return remoteJobsLiveData
     }
+
+    suspend fun addNewFavJobs(jobEntity: JobEntity) = jobsDB.getSavedJobsDao().saveNewJobs(jobEntity)
+    fun getAllFavJobs() = jobsDB.getSavedJobsDao().getAllSavedJobs()
+    suspend fun deleteFavJobs(jobEntity: JobEntity) = jobsDB.getSavedJobsDao().deleteSelectedJob(jobEntity)
 
 }

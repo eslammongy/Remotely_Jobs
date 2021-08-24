@@ -54,6 +54,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_exitWebView" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSavedFavJobs"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_bookmark"
+            android:layout_marginEnd="20dp"
+            app:tint="@color/white"
+            app:backgroundTint="@color/Orange"
+            android:layout_marginBottom="100dp"
+            android:background="@color/Orange"
+            android:contentDescription="@string/todo" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

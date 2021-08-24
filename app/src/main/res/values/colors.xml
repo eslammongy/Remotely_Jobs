@@ -11,5 +11,6 @@
     <color name="primaryGrey">#898D8A</color>
     <color name="lightDark">#3F4449</color>
     <color name="Orange">#FF8400</color>
-    <color name="lightOrange">#F3CBA1</color>
+    <color name="lightOrange">#F9A825</color>
+    <color name="colorRed">#C62828</color>
 </resources>
