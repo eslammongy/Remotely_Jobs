@@ -16,11 +16,7 @@ class RemoteJobsRepo (private val jobsDB:DataBaseBuilder){
 
     private val remoteJobsServices = RetrofitBuilder.API_SERVICES
     private var remoteJobsLiveData:MutableLiveData<RemoteJobs> = MutableLiveData()
-
-//    init {
-//        getRemoteSoftWareJobsResponse()
-//        getRemoteGraphicJobsResponse()
-//    }
+    private var searchListJobsLiveData:MutableLiveData<RemoteJobs> = MutableLiveData()
 
      fun getRemoteJobsResponse(category:String):LiveData<RemoteJobs>{
          remoteJobsLiveData.value = null
@@ -36,6 +32,23 @@ class RemoteJobsRepo (private val jobsDB:DataBaseBuilder){
                 }
             })
         return remoteJobsLiveData
+    }
+
+    fun searchForRemoteJobs(query:String){
+        remoteJobsServices.searchRemoteJobsResponse(query).enqueue(object :Callback<RemoteJobs>{
+            override fun onResponse(call: Call<RemoteJobs>, response: Response<RemoteJobs>) {
+                searchListJobsLiveData.postValue(response.body())
+            }
+            override fun onFailure(call: Call<RemoteJobs>, t: Throwable) {
+                searchListJobsLiveData.postValue(null)
+                Log.e(TAG , "onFailure ..${t.message}")
+            }
+        })
+
+    }
+
+    fun  getSearchResult():LiveData<RemoteJobs> {
+        return searchListJobsLiveData
     }
 
     suspend fun addNewFavJobs(jobEntity: JobEntity) = jobsDB.getSavedJobsDao().saveNewJobs(jobEntity)

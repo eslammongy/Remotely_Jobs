@@ -9,4 +9,7 @@ interface RemoteJobsApi {
 
     @GET("remote-jobs?limit=6")
     fun getRemoteJobsResponse(@Query("category") query: String?): Call<RemoteJobs>
+
+    @GET("remote-jobs")
+    fun searchRemoteJobsResponse(@Query("search") query: String?): Call<RemoteJobs>
 }

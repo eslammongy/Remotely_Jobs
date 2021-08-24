@@ -20,6 +20,10 @@ class RemoteViewModel(
 
     fun remoteCustomerJobsResult() = remoteJobsRepo.getRemoteJobsResponse("customer-support")
 
+    fun searchForJobs(query:String) = remoteJobsRepo.searchForRemoteJobs(query)
+
+    fun searchJobsResult() = remoteJobsRepo.getSearchResult()
+
     fun insertNewJob(jobEntity: JobEntity) = viewModelScope.launch {
         remoteJobsRepo.addNewFavJobs(jobEntity)
     }

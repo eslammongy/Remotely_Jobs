@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eslammongy.remotelyjobs.HomeActivity
 import com.eslammongy.remotelyjobs.adapter.RemoteJobsAdapter
 import com.eslammongy.remotelyjobs.databinding.FragmentSoftEngineerBinding
+import com.eslammongy.remotelyjobs.other.Constants
 import com.eslammongy.remotelyjobs.viewModel.RemoteViewModel
 
 class SoftEngineerFragment : Fragment() {
@@ -33,7 +35,11 @@ class SoftEngineerFragment : Fragment() {
         viewModel = (activity as HomeActivity).mainViewModel
         binding.progressCircular.visibility = View.VISIBLE
 
-        displayDevopsRecyclerView()
+        if (Constants.checkNetworkConnection(requireContext())){
+            displayDevopsRecyclerView()
+        }else{
+            Toast.makeText(requireContext(), "No Internet Connection !!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun displayDevopsRecyclerView(){
