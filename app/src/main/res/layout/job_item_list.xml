@@ -63,19 +63,20 @@
 
     <ImageButton
         android:id="@+id/ibDelete"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/circlar_shap"
         android:contentDescription="@string/todo"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_baseline_delete_24"
         android:visibility="gone"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        android:padding="8dp"
-        app:layout_constraintEnd_toStartOf="@id/logoLayout"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/colorRed" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@color/white" />
 
     <LinearLayout
         android:id="@+id/logoLayout"

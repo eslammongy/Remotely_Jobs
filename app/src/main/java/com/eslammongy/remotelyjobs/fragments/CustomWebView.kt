@@ -69,6 +69,7 @@ class CustomWebView(private var currentJob: JobModel) : DialogFragment() {
         binding.tvShowLinkInWebView.text = currentJob.title
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun saveNewFavJobs() {
 
         val favJob = JobEntity(
@@ -80,6 +81,8 @@ class CustomWebView(private var currentJob: JobModel) : DialogFragment() {
         viewModel.insertNewJob(favJob)
         Snackbar.make(binding.root, "Your Fav Job Saved Successfully", Snackbar.LENGTH_LONG).apply {
             setBackgroundTint(Color.DKGRAY)
+          //  setTextColor(R.color.white)
+
             show()
         }
     }

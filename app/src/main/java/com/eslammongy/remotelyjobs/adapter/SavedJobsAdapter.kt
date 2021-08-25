@@ -48,7 +48,7 @@ class SavedJobsAdapter  (private val context: Context , private val onItemClicke
             val dateJob = currentJob.publicationDate?.split("T")
             binding?.tvDate!!.text = dateJob?.get(0)
 
-            binding?.ibDelete!!.visibility = View.VISIBLE
+           // binding?.ibDelete!!.visibility = View.VISIBLE
         }.setOnClickListener {
             val tags = arrayListOf<String>()
             val favJob = JobModel(
@@ -57,11 +57,11 @@ class SavedJobsAdapter  (private val context: Context , private val onItemClicke
                 currentJob.publicationDate, currentJob.salary,tags ,currentJob.title, currentJob.url)
             CustomWebView(favJob).show((context as HomeActivity).supportFragmentManager , "TAG")
         }
-        holder.itemView.apply {
-            binding?.ibDelete!!.setOnClickListener {
-                onItemClicked.onItemClick(currentJob , binding?.ibDelete!! , position)
-            }
-        }
+//        holder.itemView.apply {
+//            binding?.ibDelete!!.setOnClickListener {
+//                onItemClicked.onItemClick(currentJob , binding?.ibDelete!! , position)
+//            }
+//        }
     }
 
     override fun getItemCount(): Int {

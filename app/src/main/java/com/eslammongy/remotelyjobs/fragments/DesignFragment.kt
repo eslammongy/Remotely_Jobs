@@ -38,10 +38,10 @@ class DesignFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         swipeRefresh = binding.swipeRefresh
         swipeRefresh.setOnRefreshListener(this)
         swipeRefresh.setColorSchemeColors(Color.GREEN , Color.RED, Color.BLUE , Color.DKGRAY)
-        swipeRefresh.post {
-            swipeRefresh.isRefreshing = true
-            displayDevopsRecyclerView()
-        }
+//        swipeRefresh.post {
+//            swipeRefresh.isRefreshing = true
+//            displayDevopsRecyclerView()
+//        }
         binding.progressCircular.visibility = View.VISIBLE
         if (Constants.checkNetworkConnection(requireContext())){
             displayDevopsRecyclerView()
@@ -80,6 +80,8 @@ class DesignFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
+        swipeRefresh.isRefreshing = true
+
         displayDevopsRecyclerView()
     }
 

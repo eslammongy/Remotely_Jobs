@@ -2,23 +2,20 @@ package com.eslammongy.remotelyjobs.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eslammongy.remotelyjobs.HomeActivity
-import com.eslammongy.remotelyjobs.R
 import com.eslammongy.remotelyjobs.adapter.SavedJobsAdapter
-import com.eslammongy.remotelyjobs.databinding.FragmentCustomWebViewBinding
 import com.eslammongy.remotelyjobs.databinding.FragmentSavedJobsBinding
 import com.eslammongy.remotelyjobs.model.JobEntity
 import com.eslammongy.remotelyjobs.viewModel.RemoteViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.util.*
 
 class SavedJobsFragment : Fragment() , SavedJobsAdapter.OnItemClickListener{
     private var _binding: FragmentSavedJobsBinding? = null
@@ -38,6 +35,50 @@ class SavedJobsFragment : Fragment() , SavedJobsAdapter.OnItemClickListener{
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as HomeActivity).mainViewModel
         displayRecyclerView()
+
+        var deletedItem: String?
+        val itemTouchHelperCallback =
+            object :
+                ItemTouchHelper.SimpleCallback(
+                    0,
+                    ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+                ) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+
+                }
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                    val position: Int = viewHolder.adapterPosition
+                    val listSavedJobs: JobEntity = savedJobsAdapter.differ.currentList[position]
+
+                    context?.let {
+                        viewModel.deleteFavJob(listSavedJobs)
+                    }
+                    deletedItem =
+                        "Are You Sure You Want To Delete This Job OR Undo Deleted .."
+                    viewModel.deleteFavJob(listSavedJobs)
+                   // savedJobsAdapter.differ.currentList.remove(listSavedJobs)
+                    savedJobsAdapter.notifyDataSetChanged()
+                    Snackbar.make(binding.rvSavedJobs, deletedItem!!, Snackbar.LENGTH_LONG)
+                        .setAction(
+                            "Undo"
+                        ) {
+
+//                            savedJobsAdapter.differ.currentList.add(position , listSavedJobs)
+                            viewModel.insertNewJob(listSavedJobs)
+                            savedJobsAdapter.notifyItemInserted(position)
+
+                        }.show()
+                }
+            }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.rvSavedJobs)
 
 
     }

@@ -39,10 +39,7 @@ class SoftEngineerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         swipeRefresh = binding.swipeRefresh
         swipeRefresh.setOnRefreshListener(this)
         swipeRefresh.setColorSchemeColors(Color.GREEN , Color.RED, Color.BLUE , Color.DKGRAY)
-        swipeRefresh.post {
-            swipeRefresh.isRefreshing = true
-            displayDevopsRecyclerView()
-        }
+
         binding.progressCircular.visibility = View.VISIBLE
         if (Constants.checkNetworkConnection(requireContext())){
             displayDevopsRecyclerView()
@@ -50,6 +47,8 @@ class SoftEngineerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             swipeRefresh.isRefreshing = false
             Toast.makeText(requireContext(), "No Internet Connection !!", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
     private fun displayDevopsRecyclerView(){
@@ -79,6 +78,7 @@ class SoftEngineerFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
+        swipeRefresh.isRefreshing = true
         displayDevopsRecyclerView()
     }
 
