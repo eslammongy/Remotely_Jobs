@@ -39,6 +39,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBarNav"
+        app:layout_constraintTop_toBottomOf="@+id/topBar"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/app_navigation"
+        />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBarNav"
         android:layout_width="match_parent"
@@ -51,17 +62,6 @@
         app:itemIconTint="@color/Orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomBarNav"
-        app:layout_constraintTop_toBottomOf="@+id/topBar"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/app_navigation"
-        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

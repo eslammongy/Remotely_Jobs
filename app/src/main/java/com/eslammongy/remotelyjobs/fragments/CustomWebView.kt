@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.fragment.app.DialogFragment
 import com.eslammongy.remotelyjobs.HomeActivity
@@ -41,6 +42,14 @@ class CustomWebView(private var currentJob: JobModel) : DialogFragment() {
         binding.taskWebView.loadUrl(currentJob.url!!)
         val webViewSetting = binding.taskWebView.settings
         webViewSetting.javaScriptEnabled = true
+        webViewSetting.setAppCacheEnabled(true)
+        webViewSetting.setSupportZoom(true)
+        webViewSetting.cacheMode = WebSettings.LOAD_DEFAULT
+        webViewSetting.displayZoomControls = false
+        webViewSetting.blockNetworkImage = false
+        webViewSetting.loadsImagesAutomatically = true
+        webViewSetting.textZoom = 100
+
         binding.taskWebView.webViewClient = WebViewClient()
         binding.taskWebView.canGoBack()
         binding.taskWebView.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->

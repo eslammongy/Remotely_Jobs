@@ -58,20 +58,6 @@
                 android:gravity="center_vertical"
                 app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24"
                 app:drawableTint="@color/primaryDark" />
-<!--            <TextView-->
-<!--                android:id="@+id/tv_job_location"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:text="@string/job_location"-->
-<!--                android:textSize="17sp"-->
-<!--                android:maxLength="20"-->
-<!--                android:fontFamily="@font/roboto_regular"-->
-<!--                android:textColor="@color/primaryDark"-->
-<!--                android:gravity="center_vertical"-->
-<!--                app:drawableTint="@color/primaryDark"-->
-<!--                app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />-->
-
 
         </LinearLayout>
 
@@ -83,9 +69,11 @@
         android:contentDescription="@string/todo"
         android:src="@drawable/ic_baseline_delete_24"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:padding="8dp"
+        app:layout_constraintEnd_toStartOf="@id/logoLayout"
+        android:layout_marginEnd="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/colorRed" />
 
@@ -106,7 +94,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_remotely_jobs_logo"
             android:padding="8dp"
-            android:background="@drawable/circlar_shap"
             app:shapeAppearanceOverlay="@style/RoundedShape"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
